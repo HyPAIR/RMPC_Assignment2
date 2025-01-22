@@ -2,7 +2,7 @@
 Assignments for robotics motion planning and control module in the University of Birmingham (Lattice planner & trajectory generation) 
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <img src="https://github.com/HyPAIR/RMPC_Assignment2/blob/main/assignment2.png" alt="task_allocation" width="680" height="400">
+  <img src="https://github.com/HyPAIR/RMPC_Assignment2/blob/main/assignment2.png" alt="lattice_planner" width="680" height="400">
 </div>
 
 ## Requirements
@@ -69,20 +69,6 @@ sudo apt-get install libeigen3-dev libxml2-dev coinor-libipopt-dev qtbase5-dev q
 sudo apt install -y gazebo11 ros-foxy-gazebo-ros-pkgs ros-foxy-cartographer ros-foxy-cartographer-ros ros-foxy-navigation2 ros-foxy-nav2-bringup ros-foxy-turtlebot3* python3-vcstool
 ```
 
-4. Build Assignment1:
-```shell
-mkdir -p ~/assignment1/src
-cd ~/assignment1/src
-git clone https://github.com/HyPAIR/RMPC_Assignment1.git
-cd ..
-colcon build --merge-install --cmake-args -DIDYNTREE_USES_PYTHON=True -DIDYNTREE_USES_IPOPT:BOOL=ON -DCMAKE_BUILD_TYPE=Release
-```
-
-```shell
-source install/setup.bash
-ros2 launch panda_ros2_gazebo gazebo.launch.py
-```
-
 4. Build Assignment2:
 ```shell
 mkdir -p ~/assignment2/src
@@ -94,5 +80,7 @@ colcon build
 
 ```shell
 source install/setup.bash
-ros2 launch turtlebot3_navigation2 navigation2.launch.py 
+cd ~/assignment2/src/RMPC_Assignment2/LatticePlanner
+python3 main.py
+ros2 launch turtlebot3_navigation2 world.launch.py 
 ```
